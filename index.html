@@ -1,44 +1,72 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="scripts.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>PTempo</title>
-  </head>
-  <body>
-    <div class="caixa-maior">
-      <input class="input-cidade" placeholder="Digite o nome da cidade" />
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MeuAcerto - Calculadora de Rescisão</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
 
-      <button class="botao-busca" onclick="cliqueiNoBotao()">
-         <img class="img-busca" src="https://www.svgrepo.com/show/488200/find.svg" alt="">
-        </button>
-        
-      <div class="caixa-media">
-          <h2 class="cidade">São Paulo</h2>
-          <p class="temp">21°C</p>
+<header>
+    <div class="logo">Meu<span>Acerto</span></div>
+</header>
 
-          <div class="caixa-menor">
-             <img class="img_previsao"
-            alt="incone-info-tempo"
-            src="https://openweathermap.org/img/wn/04n.png"
-          />
-          <p class="texto-previsao">Nublado</p>
-              </div>
-          <div class="umidade"></div>
+<main>
+    <section class="hero">
+        <h1>Sua Rescisão Completa</h1>
+        <p>Cálculo de verbas, FGTS total e multa rescisória.</p>
+    </section>
 
-      </div>
+    <section class="calculator">
+        <div class="card">
+            <div class="input-group">
+                <label>Salário Bruto (R$)</label>
+                <input type="number" id="salario" placeholder="Ex: 3500">
+            </div>
 
-      <footer><p>© Tiago sousa😎</p></footer>
-    </div>
+            <div class="row">
+                <div class="input-group">
+                    <label>Admissão</label>
+                    <input type="date" id="admissao">
+                </div>
+                <div class="input-group">
+                    <label>Demissão</label>
+                    <input type="date" id="demissao">
+                </div>
+            </div>
 
-   
-  </body>
+            <div class="input-group">
+                <label>Motivo da Saída</label>
+                <select id="tipo">
+                    <option value="sem">Demissão sem justa causa</option>
+                    <option value="pedido">Pedido de demissão</option>
+                    <option value="justa">Justa causa</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Aviso Prévio</label>
+                <select id="aviso">
+                    <option value="trabalhado">Trabalhado</option>
+                    <option value="indenizado">Indenizado (pago pela empresa)</option>
+                    <option value="nao_cumprido">Não cumprido (descontado)</option>
+                </select>
+            </div>
+
+            <button onclick="calcular()" class="btn-main">Calcular Meu Acerto</button>
+
+            <div id="resultado"></div>
+
+            <button id="btnPDF" onclick="gerarPDF()" class="btn-pdf" disabled>
+                📄 Baixar Relatório Detalhado (PDF)
+            </button>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
 </html>
